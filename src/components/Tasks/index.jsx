@@ -14,7 +14,7 @@ const Tasks = ({list, onEditTitle, onAddTask, withoutEmpty,onRemoveTask, onEditT
         const newTitle = window.prompt('Название', list.name)
         if(newTitle){
             onEditTitle(list.id,newTitle)
-            axios.patch('http://localhost:3001/lists/'+list.id,{
+            axios.patch('https://todolist-react-drab.vercel.app/lists/'+list.id,{
                 name:newTitle
             }).catch(()=>{
                 alert("все хуйня")})
