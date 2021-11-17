@@ -9,7 +9,7 @@ import remove from '../../assets/remove.svg'
 const List = ({items, onClick, isRemovable, onRemove, onClickItem, activeItem}) => {
     const removeList=(item)=>{
         if(window.confirm('Точно?')){
-            axios.delete('https://todolist-react-drab.vercel.app/lists/'+item.id).then(()=>{
+            axios.delete('http://localhost:3001/lists/'+item.id).then(()=>{
                 onRemove(item.id)
             })
 

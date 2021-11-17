@@ -4,7 +4,7 @@ const Task = ({id,text,onRemove, completed, onEdit, list, onComplete}) => {
 
     const [textValue, setTextValue] = useState(text)
     const onChangeCheckbox = e=>{
-        onComplete(list.id,id, e.target.checked)
+        onComplete(list.id,id,e.target.checked)
     }
     return (
         <div key={id} className="tasks__items-row">

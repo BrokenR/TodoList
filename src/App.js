@@ -16,10 +16,10 @@ function App() {
     console.log(location)
 
 useEffect(()=>{
-    axios.get('https://todolist-react-drab.vercel.app/lists?_expand=color&_embed=tasks').then(({ data })=>{
+    axios.get('http://localhost:3001/lists?_expand=color&_embed=tasks').then(({ data })=>{
         setLists(data)
     })
-    axios.get('https://todolist-react-drab.vercel.app/colors').then(({ data })=>{
+    axios.get('http://localhost:3001/colors').then(({ data })=>{
         setColors(data)
     })
 }, [])
@@ -56,7 +56,7 @@ useEffect(()=>{
                return item
            })
             setLists(newList)
-            axios.delete('https://todolist-react-drab.vercel.app/tasks/'+taskId,{
+            axios.delete('http://localhost:3001/tasks/'+taskId,{
             }).catch(()=>{
                 alert("все хуйня")})
         }
@@ -70,7 +70,7 @@ useEffect(()=>{
                 return item
             })
             setLists(newList)
-            axios.patch('https://todolist-react-drab.vercel.app/' + taskId, {text: inputValue}).catch(() => alert('НЕА'))
+            axios.patch('http://localhost:3001/tasks/' + taskId, {text: inputValue}).catch(() => alert('НЕА'))
         } else {
             alert("Введи чото")
         }
@@ -90,7 +90,7 @@ useEffect(()=>{
         })
         setLists(newList)
         axios
-            .patch('https://todolist-react-drab.vercel.app/tasks/'+taskId,{
+            .patch('http://localhost:3001/tasks/'+taskId,{
                 completed
             }).catch(()=>alert(123))
     }
