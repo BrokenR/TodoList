@@ -14,7 +14,7 @@ const Tasks = ({list, onEditTitle, onAddTask, withoutEmpty,onRemoveTask, onEditT
         const newTitle = window.prompt('Название', list.name)
         if(newTitle){
             onEditTitle(list.id,newTitle)
-            axios.patch('http://localhost:3001/lists/'+list.id,{
+            axios.patch('/lists/'+list.id,{
                 name:newTitle
             }).catch(()=>{
                 alert("все хуйня")})
@@ -32,7 +32,7 @@ const Tasks = ({list, onEditTitle, onAddTask, withoutEmpty,onRemoveTask, onEditT
                 {!withoutEmpty &&list.tasks&& !list.tasks.length && list.tasks&& <h2>Задачи отсутствуют</h2>}
                 {list.tasks&&list.tasks.map(task=><Task list={list} onEdit={onEditTask} onComplete={onCompleteTask} onRemove={onRemoveTask} key={task.id}{...task}/>)
                 }
-                <AddTaskForm key={list.id}list={list} onAddTask={onAddTask}/>
+                <AddTaskForm key={list.id} list={list} onAddTask={onAddTask}/>
             </div>
         </div>
     );

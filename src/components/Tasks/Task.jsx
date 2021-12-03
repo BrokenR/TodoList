@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 
 const Task = ({id,text,onRemove, completed, onEdit, list, onComplete}) => {
-
     const [textValue, setTextValue] = useState(text)
     const onChangeCheckbox = e=>{
         onComplete(list.id,id,e.target.checked)

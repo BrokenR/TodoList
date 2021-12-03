@@ -13,13 +13,13 @@ function App() {
     const [activeItem, setActiveItem] = useState(null)
     let history = useNavigate();
     let location = useLocation()
-    console.log(location)
+
 
 useEffect(()=>{
-    axios.get('http://localhost:3001/lists?_expand=color&_embed=tasks').then(({ data })=>{
+    axios.get('/lists?_expand=color&_embed=tasks').then(({ data })=>{
         setLists(data)
     })
-    axios.get('http://localhost:3001/colors').then(({ data })=>{
+    axios.get('/colors').then(({ data })=>{
         setColors(data)
     })
 }, [])
@@ -70,13 +70,13 @@ useEffect(()=>{
                 return item
             })
             setLists(newList)
-            axios.patch('http://localhost:3001/tasks/' + taskId, {text: inputValue}).catch(() => alert('НЕА'))
+            axios.patch('/tasks/' + taskId, {text: inputValue}).catch(() => alert('НЕА'))
         } else {
             alert("Введи чото")
         }
     }
 
-    const onCompleteTask =(listId, taskId, completed)=>{
+    const  onCompleteTask =(listId, taskId, completed)=>{
         const newList = lists.map(item=>{
             if(item.id===listId){
                 item.tasks= item.tasks.map(task=>{
@@ -90,10 +90,11 @@ useEffect(()=>{
         })
         setLists(newList)
         axios
-            .patch('http://localhost:3001/tasks/'+taskId,{
+            .patch('/tasks/'+taskId,{
                 completed
             }).catch(()=>alert(123))
     }
+
 
 useEffect(()=>{
     const listId=location.pathname.split('lists/')[1]
@@ -157,7 +158,7 @@ useEffect(()=>{
                               onEditTitle={onEditListTitle}
                               onRemoveTask={onRemoveTask}
                               onEditTask={onEditTask}
-                              onComplete={onCompleteTask}
+                              onCompleteTask={onCompleteTask}
                               list={list}
                               withoutEmpty
                           />

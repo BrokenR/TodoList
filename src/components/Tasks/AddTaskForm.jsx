@@ -19,7 +19,7 @@ const addTask =()=>{const obj = {
     "completed":false
 }
     setIsLoading(true)
-     axios.post('http://localhost:3001/tasks', obj).then(({data})=>{
+     axios.post('/tasks', obj).then(({data})=>{
 
          onAddTask(list.id,data )
          closeForm()

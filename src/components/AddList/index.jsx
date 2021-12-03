@@ -30,7 +30,7 @@ const AddList = ({colors, onAdd}) => {
         }
         setIsLoading(true)
         axios
-            .post('http://localhost:3001/lists',{name:inputValue, colorId:selectedColor})
+            .post('/lists',{name:inputValue, colorId:selectedColor})
 
             .then(({data})=>{
                 const color = colors.filter(c=>c.id===selectedColor)[0]
